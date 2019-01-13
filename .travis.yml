@@ -1,0 +1,27 @@
+# Config file for automatic testing at travis-ci.org
+language: python
+python:
+  - 3.6
+  - 3.5
+  - 3.4
+
+env:
+  matrix:
+    - NODE=8.15.0
+    - NODE=10.15.0
+
+matrix:
+  fast_finish: true
+
+services:
+  - mongodb
+
+# Command to install dependencies
+install: 
+  - nvm install ${NODE}
+  - node --version
+
+# Command to run tests
+script: 
+  - python main.py
+  - node main.js
